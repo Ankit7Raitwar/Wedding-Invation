@@ -51,7 +51,7 @@
       </div>
 
       <h1 class="names">
-        Ankita Raitwar <span class="amp">&amp;</span> <br> Yegesh Mangrole
+        Ankita<br> <span class="amp">&amp;</span> <br> Yogesh 
       </h1>
       <br>
 
@@ -92,13 +92,12 @@
         </div>
       </div>
 
-      <!-- <div class="ai-blessing-cta">
+      <div class="ai-blessing-cta">
         <div class="ai-blessing-content">
-          <h3>AI Blessing</h3>
-          <p>Click the button to receive a personalized blessing animation that celebrates your love.</p>
-          <button class="btn primary" onclick="openBlessing()">Receive AI Blessing</button>
+             <p style="margin-top: 0.5rem; color: #5e363e; font-weight: 600;">रैतवार परिवार विनम्रतापूर्वक आप सभी को सपरिवार सादर आमंत्रित करता है। कृपया पधारकर नव दंपति को आशीर्वाद प्रदान करें।</p>
+          <!-- <button class="btn primary" onclick="openBlessing()">Receive AI Blessing</button> -->
         </div>
-      </div> -->
+      </div>
     </div>
   </header>
 
@@ -143,7 +142,7 @@
                 <figcaption>Sunset, a quiet promise.</figcaption>
               </figure>
               <figure class="sm" data-tilt>
-                <img src="Copilot_20250916_005644.png" alt="Elegant portrait of couple">
+                <img src="./three.jpeg" alt="Elegant portrait of couple">
                 <figcaption>Together, effortlessly.</figcaption>
               </figure>
               
@@ -158,7 +157,7 @@
       <h3 class="events-headline" id="events-title">Events</h3>
 
       <!-- Nikah -->
-      <section class="card third" data-tilt aria-labelledby="nikah-title">
+      <section class="card third event-bg mehndi-bg" data-tilt aria-labelledby="nikah-title">
         <span class="pill" aria-hidden="true"><span class="dot"></span> Mehndi</span>
         <h3 id="nikah-title">Mehndi</h3>
         <div class="meta">
@@ -172,7 +171,7 @@
       </section>
 
       <!-- Mehendi -->
-      <section class="card third" data-tilt aria-labelledby="mehendi-title">
+      <section class="card third event-bg sangeet-bg" data-tilt aria-labelledby="mehendi-title">
         <span class="pill" aria-hidden="true"><span class="dot"></span>Sangeet</span>
         <h3 id="mehendi-title">Sangeet</h3>
         <div class="meta">
@@ -186,7 +185,7 @@
       </section>
 
       <!-- Barat -->
-      <section class="card third" data-tilt aria-labelledby="barat-title">
+      <section class="card third event-bg barat-bg" data-tilt aria-labelledby="barat-title">
         <span class="pill" aria-hidden="true"><span class="dot"></span> Barat</span>
         <h3 id="barat-title">Barat</h3>
         <div class="meta">
@@ -246,7 +245,8 @@
        
         <p>Please let us know if you’ll join us.</p>
         <ul>
-          <li><a href="https://my-portfolio-three-henna-14.vercel.app/" target="_blank" onclick="openRSVP()">Ankit Raitwar Developer</a></li>
+          <li><a href="https://my-portfolio-three-henna-14.vercel.app/" target="_blank" onclick="openRSVP()" style="color:rgb(201, 109, 109)">Ankit Raitwar Developer</a></li>
+          <li>Mo.No. 9630535317</li>
           <li><a href="mailto:ankitraitwar@gmail.com">ankitraitwar@gmail.com</a></li>
         </ul>
       </div>
@@ -323,14 +323,14 @@
       const ics =
 `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Sobia&Irfan//Wedding//EN
+PRODID:-//Ankita&Yogesh//Wedding//EN
 BEGIN:VEVENT
-UID:${Date.now()}@sobia-irfan
+UID:${Date.now()}@ankita-yogesh
 DTSTAMP:${toICS(new Date())}
 DTSTART:${toICS(start)}
 DTEND:${toICS(end)}
-SUMMARY:${title} — Sobia & Irfan
-DESCRIPTION:With love, Ankita Raitwar & Yegesh Menhdole
+SUMMARY:${title} — Ankita & Yogesh
+DESCRIPTION:With love, Ankita Raitwar & Yogesh Mangrole
 END:VEVENT
 END:VCALENDAR`.replace(/\n/g, '\r\n');
 
@@ -338,7 +338,7 @@ END:VCALENDAR`.replace(/\n/g, '\r\n');
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${title.replace(/\s+/g,'_')}_Sobia_Irfan.ics`;
+      a.download = `${title.replace(/\s+/g,'_')}_Ankita_Yogesh.ics`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -359,18 +359,7 @@ END:VCALENDAR`.replace(/\n/g, '\r\n');
     //   dlg.close();
     // }
 
-    // Blessing modal logic
-    function openBlessing(){
-      const dlg = document.getElementById('blessingDialog');
-      if(typeof dlg.showModal === 'function'){ dlg.showModal(); }
-      else alert('Blessing: May your love be eternal.');
-    }
-
-    function closeBlessing(){
-      const dlg = document.getElementById('blessingDialog');
-      dlg.close();
-    }
-
+   
     // Countdown timer animation for the hero section
     (function(){
       const dayEl = document.getElementById('cd-days');
@@ -427,6 +416,29 @@ END:VCALENDAR`.replace(/\n/g, '\r\n');
 
       updateCountdown();
       const timer = setInterval(updateCountdown, 1000);
+    })();
+
+    // Advanced event card mouse tracking for radial glow effect
+    (function(){
+      const eventCards = document.querySelectorAll('.event-bg');
+      
+      eventCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const xPercent = (x / rect.width) * 100;
+          const yPercent = (y / rect.height) * 100;
+          
+          card.style.setProperty('--mouse-x', xPercent + '%');
+          card.style.setProperty('--mouse-y', yPercent + '%');
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.setProperty('--mouse-x', '50%');
+          card.style.setProperty('--mouse-y', '50%');
+        });
+      });
     })();
 
   </script>

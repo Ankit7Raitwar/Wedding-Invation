@@ -53,9 +53,10 @@ body{
               var(--ivory);
 }
 .bg-image{
+  /* https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format&fit=crop */
   position: absolute;
   inset: -5vh -5vw;
-  background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format&fit=crop'); /* Replace with your photo */
+  background-image: url('/bg.jpeg'); /* Replace with your photo */
   background-size: cover;
   background-position: center;
   filter: contrast(1.02) saturate(1.05);
@@ -308,7 +309,7 @@ header.hero{
 .step.pending{
   border-color: #e8b143;
   background: rgba(255,243,209,.9);
-  animation: pendingPulse 1.3s ease-in-out infinite;
+  /* animation: pendingPulse 1.3s ease-in-out infinite; */
 }
 .step .emoji{ font-size: 1.2rem; }
 .step .label{ font-weight: 600; color: var(--mahroon); }
@@ -324,8 +325,8 @@ header.hero{
 .step.pending .status{ background: rgba(232,177,67,.24); color: #925e11; }
 
 @keyframes pendingPulse{
-  0%,100%{ transform: translateY(0); box-shadow: 0 0 0 0 rgba(232,177,67,0.35); }
-  50%{ transform: translateY(-2px); box-shadow: 0 0 0 8px rgba(232,177,67,0); }
+  /* 0%,100%{ transform: translateY(0); box-shadow: 0 0 0 0 rgba(232,177,67,0.35); } */
+  /* 50%{ transform: translateY(-2px); box-shadow: 0 0 0 8px rgba(232,177,67,0); } */
 }
 
 main{
@@ -349,6 +350,18 @@ main{
   box-shadow: 0 20px 50px -25px var(--shadow);
   transform-style: preserve-3d;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  animation: cardSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @media (min-width: 820px){
   .card.third{ grid-column: span 4; }
@@ -359,6 +372,80 @@ main{
   color: var(--mahroon);
   font-size: var(--h2);
   margin: .5rem 0 .25rem;
+  animation: textGlow 2s ease-in-out infinite;
+}
+.card .pill{
+  animation: pillFloat 3s ease-in-out infinite;
+}
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 0 rgba(107,15,26,0); }
+  50% { text-shadow: 0 0 8px rgba(107,15,26,.3); }
+}
+@keyframes pillFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+.event-bg{
+  background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.6)), url('bg.jpeg') center/cover;
+  animation: bgMove 10s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.event-bg::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+.event-bg::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,.2) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.event-bg:hover{
+  animation: bgMoveHover 5s ease-in-out infinite;
+  transform: scale(1.02);
+  box-shadow: 0 25px 60px -20px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,.2);
+  filter: brightness(1.05) saturate(1.1);
+}
+.event-bg:hover::after{
+  opacity: 1;
+}
+@keyframes bgMove {
+  0%, 100% { background-position: center; }
+  50% { background-position: center 20%; }
+}
+@keyframes bgMoveHover {
+  0%, 100% { background-position: center; }
+  25% { background-position: 20% 10%; }
+  50% { background-position: center 20%; }
+  75% { background-position: 80% 10%; }
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.mehndi-bg{
+  background: linear-gradient(135deg, rgba(255,255,255,.7), rgba(255,255,255,.6)), url('./one.jpeg') center/cover;
+  animation: bgMove 10s ease-in-out infinite, gradientShift 6s ease infinite;
+}
+.sangeet-bg{
+  background: linear-gradient(225deg, rgba(255,255,255,.7), rgba(255,255,255,.6)), url('./two.jpeg') center/cover;
+  animation: bgMove 10s ease-in-out infinite, gradientShift 7s ease infinite;
+}
+.barat-bg{
+  background: linear-gradient(45deg, rgba(255,255,255,.7), rgba(255,255,255,.6)), url('./final.png') center/cover;
+  animation: bgMove 10s ease-in-out infinite, gradientShift 8s ease infinite;
+}
+@keyframes gradientShift {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(2deg); }
 }
 .meta{
   display: grid;
@@ -397,9 +484,20 @@ main{
   padding: .7rem 1rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 14px 28px -18px var(--shadow);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-  will-change: transform;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+  animation: buttonShine 3s infinite;
+}
+@keyframes buttonShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 .btn.primary{
   background: linear-gradient(135deg, var(--mahroon), var(--mahroon-velvet));
@@ -524,6 +622,132 @@ footer{
   .bg-image, .hero-card, .card, .gallery figure { transition: none !important; }
 }
 
+/* Advanced AI Animations */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes softGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(107,15,26,.2); }
+  50% { box-shadow: 0 0 40px rgba(107,15,26,.4); }
+}
+
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    background-position: -1000px center;
+  }
+  to {
+    opacity: 1;
+    background-position: 0 center;
+  }
+}
+
+/* Apply soft glow to cards */
+.card:nth-child(1) {
+  animation: cardSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, softGlow 4s ease-in-out 0.8s infinite;
+}
+.card:nth-child(2) {
+  animation: cardSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards, softGlow 4s ease-in-out 1s infinite;
+}
+.card:nth-child(3) {
+  animation: cardSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards, softGlow 4s ease-in-out 1.2s infinite;
+}
+
+/* Gallery animation */
+.gallery figure {
+  animation: fadeInScale 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 1;
+}
+
+.gallery figure:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.gallery figure:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.gallery figure:hover {
+  animation: floatSoft 3s ease-in-out infinite, softGlow 2s ease-in-out infinite;
+}
+
+/* On desktop/laptop hide second gallery image; keep all visible on mobile */
+@media (min-width: 981px) {
+  .gallery figure:nth-child(2) {
+    display: none;
+  }
+  .gallery figure:nth-child(1) {
+    grid-column: span 12;
+  }
+}
+@media (max-width: 980px) {
+  .gallery figure:nth-child(2) {
+    display: block;
+  }
+}
+
+/* Hero card enhanced glow */
+.hero-card {
+  box-shadow: 0 30px 60px -20px var(--shadow), 0 0 0 0 rgba(107,15,26,0.1);
+  animation: glowLift 4.2s ease-in-out infinite, borderGlow 4s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(255,255,255,.6); }
+  50% { border-color: rgba(255,255,255,.9); }
+}
+
+/* Step timeline animation */
+.step {
+  animation: cardSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+.step:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.step:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.step:nth-child(3) {
+  animation-delay: 1s;
+}
+
+/* Countdown item pulse */
+.countdown-item {
+  animation: countdownFloat 2s ease-in-out infinite;
+}
+
+@keyframes countdownFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.countdown-item:hover {
+  animation: countdownFloat 2s ease-in-out infinite, softGlow 2s ease-in-out infinite;
+  transform: scale(1.05);
+}
+
 /* Inline styles moved to CSS classes */
 .story-grid {
   gap: .75rem;
@@ -544,6 +768,26 @@ footer{
 
 .events-section {
   margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.events-section .events-headline {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.events-section .card.third {
+  grid-column: span 12;
+}
+
+@media (min-width: 820px) {
+  .events-section .card.third {
+    grid-column: span 4;
+  }
 }
 
 .map-section {
