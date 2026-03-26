@@ -51,8 +51,9 @@
       </div>
 
       <h1 class="names">
-        Ankita Raitwar <span class="amp">&amp;</span> Yegesh Mangrole
+        Ankita Raitwar <span class="amp">&amp;</span> <br> Yegesh Mangrole
       </h1>
+      <br>
 
       <p class="welcome">
         प्रिय परिवार और मित्रों, हमारे लिये यह एक पवित्र मिलन है जिसका आरंभ हमारे माता-पिता के आशीर्वाद से हुआ। कृपया आकर इस आयोजन में शामिल हों और हमारी यात्रा को अनुपम बनाएँ। — अंकिता &amp; योगेश
@@ -66,31 +67,38 @@
           <div class="countdown-item"><span id="cd-days">00</span><small>Days</small></div>
           <div class="countdown-item"><span id="cd-hours">00</span><small>Hours</small></div>
           <div class="countdown-item"><span id="cd-minutes">00</span><small>Minutes</small></div>
-          <div class="countdown-item"><span id="cd-seconds">00</span><small>Seconds</small></div>
+          <div class="countdown-item countdown-seconds"><span id="cd-seconds">00</span><small>Seconds</small></div>
         </div>
       </div>
 
       <div class="timeline" aria-label="Journey from love to marriage">
-        <div class="step" data-tilt>
+        <div class="step done" data-tilt>
           <div class="emoji" aria-hidden="true">❤️</div>
           <div class="label">Love</div>
           <div>Two hearts, one rhythm</div>
+          <div class="status">Done</div>
         </div>
-        <div class="step" data-tilt>
+        <div class="step done" data-tilt>
           <div class="emoji" aria-hidden="true">💍</div>
           <div class="label">Engagement</div>
           <div>Promises made</div>
+          <div class="status">Done</div>
         </div>
-        <div class="step" data-tilt>
+        <div class="step pending" data-tilt>
           <div class="emoji" aria-hidden="true">∞</div>
           <div class="label">Marriage</div>
           <div>Forever begins</div>
+          <div class="status">Pending</div>
         </div>
       </div>
 
-      <div class="ai-blessing-cta">
-        <button class="btn primary" onclick="openBlessing()">Receive AI Blessing</button>
-      </div>
+      <!-- <div class="ai-blessing-cta">
+        <div class="ai-blessing-content">
+          <h3>AI Blessing</h3>
+          <p>Click the button to receive a personalized blessing animation that celebrates your love.</p>
+          <button class="btn primary" onclick="openBlessing()">Receive AI Blessing</button>
+        </div>
+      </div> -->
     </div>
   </header>
 
@@ -112,15 +120,15 @@
 
             <div class="grid story-grid">
               <div class="card quote-card" data-tilt>
-                <strong class="quote-strong">Ankita about Yogesh:</strong>
+                <strong class="quote-strong">Our Promise</strong>
                 <p class="quote-text">
-                  He is patient and kind—the calm to my curve, the steady hand that holds mine when words are few.
+                  We met through family, grew together through kindness, and decided to celebrate forever with love and respect.
                 </p>
               </div>
               <div class="card quote-card" data-tilt>
-                <strong class="quote-strong">Yogesh about Ankita:</strong>
+                <strong class="quote-strong">Our Celebration</strong>
                 <p class="quote-text">
-                  She is grace and light—the laughter I wait for, the compass that points me to what matters most.
+                  In this ceremony, we welcome our families and friends to join the joy and gratitude of a new beginning.
                 </p>
               </div>
             </div>
@@ -147,7 +155,7 @@
 
     <!-- Event Sections (no venue addresses) -->
     <section class="grid events-section" id="events" aria-labelledby="events-title">
-      <h3 class="sr-only" id="events-title">Events</h3>
+      <h3 class="events-headline" id="events-title">Events</h3>
 
       <!-- Nikah -->
       <section class="card third" data-tilt aria-labelledby="nikah-title">

@@ -174,6 +174,7 @@ header.hero{
   justify-content: center;
   align-items: center;
   gap: .6rem;
+  margin-top: 2.25rem;
 }
 .hero-logo{
   width: 52px;
@@ -276,6 +277,13 @@ header.hero{
   100% { transform: scale(1); }
 }
 
+/* Mobile: hide seconds to reduce clutter */
+@media (max-width: 768px) {
+  .countdown-item.countdown-seconds {
+    display: none;
+  }
+}
+
 .timeline{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -293,8 +301,32 @@ header.hero{
   gap: .25rem;
   font-size: var(--small);
 }
+.step.done{
+  border-color: #8ac26f;
+  background: rgba(138,194,111,.14);
+}
+.step.pending{
+  border-color: #e8b143;
+  background: rgba(255,243,209,.9);
+  animation: pendingPulse 1.3s ease-in-out infinite;
+}
 .step .emoji{ font-size: 1.2rem; }
 .step .label{ font-weight: 600; color: var(--mahroon); }
+.step .status{
+  margin-top: .25rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .18rem .5rem;
+  color: #4a3f2a;
+}
+.step.done .status{ background: rgba(138,194,111,.26); color: #277a2f; }
+.step.pending .status{ background: rgba(232,177,67,.24); color: #925e11; }
+
+@keyframes pendingPulse{
+  0%,100%{ transform: translateY(0); box-shadow: 0 0 0 0 rgba(232,177,67,0.35); }
+  50%{ transform: translateY(-2px); box-shadow: 0 0 0 8px rgba(232,177,67,0); }
+}
 
 main{
   padding: 2rem 1rem 4rem;
@@ -465,6 +497,28 @@ footer{
   box-shadow: 0 30px 70px -30px rgba(107,15,26,.35);
 }
 
+.ai-blessing-cta{
+  margin-top: 1.25rem;
+  border-top: 1px solid rgba(107,15,26,.16);
+  padding-top: 1rem;
+}
+.ai-blessing-content{
+  display: grid;
+  gap: .45rem;
+  text-align: center;
+}
+.ai-blessing-content h3{
+  margin: 0;
+  color: var(--mahroon);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+}
+.ai-blessing-content p{
+  margin: 0;
+  color: #5e363e;
+  font-size: .94rem;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   .bg-image, .hero-card, .card, .gallery figure { transition: none !important; }
@@ -505,6 +559,29 @@ footer{
   margin: 0 0 .45rem;
   color: var(--mahroon);
   font-family: "Playfair Display", serif;
+}
+
+.events-headline{
+  margin: 0 0 1rem;
+  color: var(--mahroon);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .events-headline {
+    font-size: 1.2rem;
+    letter-spacing: .02em;
+    text-align: center;
+  }
 }
 .map-section p{
   margin: 0 0 .85rem;
