@@ -6,20 +6,15 @@
   <title>Ankita & Yogesh — Wedding Invitation</title>
   <meta name="description" content="Join us for the wedding celebration of Ankita Raitwar & Yogesh Menhdole on 27-28 April. A beautiful arranged marriage in Belgaun, Chhindwara.">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourwebsite.com/">
-  <meta property="og:title" content="Ankita & Yogesh Wedding Invitation">
-  <meta property="og:description" content="You're invited to the wedding of Ankita Raitwar & Yogesh Menhdole. 27-28 April in Belgaun, Chhindwara. Blessings and love await!">
-  <meta property="og:image" content="./Copilot_20250916_005908.png">
+  <!-- Open Graph (for WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:title" content="Wedding Invitation">
+<meta property="og:description" content="Ankita & Yogesh — Wedding Invitation">
+<meta property="og:image" content="https://ankit7raitwar.github.io/Wedding-Invation/Copilot_20250916_005908.png">
+<meta property="og:url" content="https://ankit7raitwar.github.io/Wedding-Invation/">
+<meta property="og:type" content="website">
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://yourwebsite.com/">
-  <meta property="twitter:title" content="Ankita & Yogesh Wedding Invitation">
-  <meta property="twitter:description" content="You're invited to the wedding of Ankita Raitwar & Yogesh Menhdole. 27-28 April in Belgaun, Chhindwara. Blessings and love await!">
-  <meta property="twitter:image" content="./Copilot_20250916_005908.png">
-
+<!-- Optional but good -->
+<meta property="og:wedding-invitation" content="https://ankit7raitwar.github.io/Wedding-Invation/">>
   <!-- Premium serif + clean sans -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="./Copilot_20250916_005908.png" type="image/png">
@@ -165,13 +160,15 @@
           <div><strong>Time:</strong> 7:00 PM</div>
         </div>
         <div class="cta">
-          <button class="btn primary" onclick="scrollToTop()">View Details</button>
-          <button class="btn ghost" onclick="addCalendar('Nikah','2025-11-25T17:00:00')">Add to Calendar</button>
+          <!-- <button class="btn primary" onclick="scrollToTop()">View Details</button> -->
+          <!-- <button class="btn ghost" onclick="addCalendar('Mehndi','2026-04-27T19:00:00')">Add to Calendar</button> -->
         </div>
       </section>
 
+       
+
       <!-- Mehendi -->
-      <section class="card third event-bg sangeet-bg" data-tilt aria-labelledby="mehendi-title">
+      <section class="card third event-bg sangeet-bg" aria-labelledby="mehendi-title">
         <span class="pill" aria-hidden="true"><span class="dot"></span>Sangeet</span>
         <h3 id="mehendi-title">Sangeet</h3>
         <div class="meta">
@@ -179,13 +176,13 @@
           <div><strong>Time:</strong> 9:00 PM</div>
         </div>
         <div class="cta">
-          <button class="btn primary" onclick="scrollToTop()">View Details</button>
-          <button class="btn ghost" onclick="addCalendar('Mehendi','2025-11-25T20:00:00')">Add to Calendar</button>
+          <!-- <button class="btn primary" onclick="scrollToTop()">View Details</button> -->
+          <!-- <button class="btn ghost" onclick="addCalendar('Sangeet','2026-04-27T21:00:00')">Add to Calendar</button> -->
         </div>
       </section>
 
       <!-- Barat -->
-      <section class="card third event-bg barat-bg" data-tilt aria-labelledby="barat-title">
+      <section class="card third event-bg barat-bg" aria-labelledby="barat-title">
         <span class="pill" aria-hidden="true"><span class="dot"></span> Barat</span>
         <h3 id="barat-title">Barat</h3>
         <div class="meta">
@@ -193,8 +190,8 @@
           <div><strong>Time:</strong> 8:00 PM</div>
         </div>
         <div class="cta">
-          <button class="btn primary" onclick="scrollToTop()">View Details</button>
-          <button class="btn ghost" onclick="addCalendar('Barat','2025-11-26T20:00:00')">Add to Calendar</button>
+          <!-- <button class="btn primary" onclick="scrollToTop()">View Details</button> -->
+          <!-- <button class="btn ghost" onclick="addCalendar('Barat','2026-04-28T20:00:00')">Add to Calendar</button> -->
         </div>
       </section>
     </section>
@@ -235,7 +232,7 @@
       <div class="footer-col">
         <h4>Schedule</h4>
         <ul>
-          <li><strong>Mehndi:</strong> 27 April, 5:00 PM</li>
+          <li><strong>Mehndi:</strong> 27 April, 7:00 PM</li>
           <li><strong>Sangeet:</strong> 27 April, 9:00 PM</li>
           <li><strong>Barat:</strong> 28 April, 8:00 PM</li>
         </ul>
@@ -308,6 +305,8 @@
 
     // Lightweight "Add to Calendar" via downloadable ICS (no venue included)
     function addCalendar(title, isoStart){
+      console.log("my vlaue is",title);
+      
       const start = new Date(isoStart);
       const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
       function toICS(dt){
